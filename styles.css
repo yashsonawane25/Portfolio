@@ -129,26 +129,124 @@ h1::before {
 .project-8 { order: 8; }
 
 /* Professional Hero Background */
-.hero-bg {
+.hero {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  background: linear-gradient(120deg, #050816, #0A0F1C);
 
-  background: linear-gradient(
-    120deg,
-    #050816,
-    #0A0F1C,
-    #0B1D3A
-  );
-  background-size: 300% 300%;
-  animation: gradientMove 25s ease infinite;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 5rem;
+  padding: 8rem 6rem;
 }
 
-/* gradient animation */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* small pill */
+.hero-pill {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.9rem;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #93c5fd;
+}
+
+/* BIG NAME */
+.hero-title {
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+  color: white;
+}
+
+/* medium supporting text */
+.hero-subtitle {
+  font-size: 1.1rem;
+  max-width: 520px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 2.5rem;
+  color: #e2e8f0;
+}
+
+/* buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.btn-primary {
+  padding: 0.9rem 2.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #f3f4f6;
+}
+
+.btn-secondary {
+  padding: 0.8rem 1.8rem;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* image */
+.hero-image img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* circular background image */
+.hero-image-circle {
+  position: absolute;
+
+  /* placement fix */
+  top: 14%;
+  right: -160px; /* half outside screen */
+
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+
+  background-image: url("https://raw.githubusercontent.com/yashsonawane25/Image/main/Screenshot%202026-01-02%20215225.png");
+  background-size: cover;
+
+  /* KEY FIX: keep face visible */
+  background-position: center top;
+
+  /* professional look */
+  filter: grayscale(100%) contrast(1.05);
+  opacity: 0.28;
+
+  /* soft blend */
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* background icons container */
@@ -191,6 +289,31 @@ h1::before {
 .hero-content {
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    margin: 2.5rem auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image-circle {
+    width: 280px;
+    height: 280px;
+    right: -120px;
+    opacity: 0.18;
+  }
 }
 
 /* subtle noise layer for depth */
